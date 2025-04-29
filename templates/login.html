@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Client Login | Avril Writers</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+  <div class="form-card">
+    <h2>Welcome Back 👋</h2>
+    <p>Log in to access your orders and messages.</p>
+
+    <form method="POST" action="/login">
+      <label for="email">Email</label>
+      <input type="email" name="email" placeholder="you@example.com" required>
+
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="Enter your password" required>
+
+      <button type="submit" class="btn-green">Login</button>
+    </form>
+
+    <p class="switch-link">New here? <a href="/signup">Create an account</a></p>
+  </div>
+  <div class="home-link">
+    <a href="/">← Go to Homepage</a>
+  </div>
+</body>
+
+</html>
