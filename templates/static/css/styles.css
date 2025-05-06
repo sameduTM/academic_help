@@ -701,7 +701,6 @@ footer {
         clip-path: circle(1000px at 90% -10%);
         -webkit-clip-path: circle(1000px at 90% -10%);
         pointer-events: all;
-        overflow: visible;
     }
 
     nav ul {
@@ -905,18 +904,71 @@ footer {
 /* Smooth scrolling for the whole page */
 html {
     scroll-behavior: smooth;
-}
+  }
+  
+  /* Offset for fixed header */
+  :target {
+    scroll-margin-top: 80px; /* Match your header height */
+  }
 
-/* Offset for fixed header */
-:target {
-    scroll-margin-top: 80px;
-    /* Match your header height */
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+  
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+  
+.modal-container {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalFadeIn 0.3s ease;
+    padding: 2rem;
+}
+  
+@keyframes modalFadeIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+  
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    transition: color 0.3s ease;
+}
+  
+.close-modal:hover {
+    color: #e74c3c;
 }
 
 /* Auth Forms */
 .auth-form {
     display: none;
-    padding: 2rem;
 }
 
 .auth-form.active {
@@ -939,123 +991,34 @@ html {
     padding-left: 40px !important;
 }
 
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
 .auth-footer {
     margin-top: 1rem;
     text-align: center;
 }
-
 .auth-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.auth-footer a:hover {
-    text-decoration: underline;
-}
-
-.btn-block {
-    width: 100%;
-    margin-top: 1rem;
-}
-
-/* Disabled state styling */
-input:disabled {
-    background-color: #f5f5f5;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Platform Selection */
-.platform-options.horizontal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    max-width: 800px;
-}
-
-.platform-option {
-    flex: 0 0 auto;
-}
-
-.platform-card {
-    min-width: 100px;
-    height: 100px;
-    justify-content: center;
-}
-
-.platform-card i {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-}
-
-.platform-card.email {
     color: #3498db;
-    border-color: #3498db33;
 }
 
-/* Custom Select Styles */
-.custom-select {
-    position: relative;
-    width: 100%;
-}
-
-.custom-select select {
-    appearance: none;
-    -webkit-appearance: none;
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: var(--border-radius);
-    background: #f9f9f9;
-    font-size: 1rem;
-    cursor: pointer;
-    padding-right: 40px;
-}
-
-.custom-select i {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    color: var(--text-color);
-}
-
-.custom-select select:focus {
-    border-color: var(--primary-color);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
-    background: white;
-}
-
-/* Platform-specific color hints */
-option[value="whatsapp"] { color: #25D366; }
-option[value="instagram"] { color: #E1306C; }
-option[value="email"] { color: #EA4335; }
-option[value="snapchat"] { color: #FFFC00; }
-option[value="facebook"] { color: #1877F2; }
-option[value="imessage"] { color: #34B7F1; }
-
-.form-confirmation {
-    padding: 20px;
-    background: #e8f5e9;
-    border-radius: var(--border-radius);
-    border: 1px solid #a5d6a7;
-    margin-top: 20px;
+.password-strength {
+    margin-top: 5px;
     display: flex;
-    align-items: center;
-    gap: 15px;
-    animation: fadeIn 0.3s ease;
+    gap: 5px;
 }
 
-.form-confirmation i {
-    color: #2e7d32;
-    font-size: 1.5rem;
+.strength-bar {
+    height: 3px;
+    flex: 1;
+    background: #eee;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+.strength-text {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    margin-left: 10px;
 }

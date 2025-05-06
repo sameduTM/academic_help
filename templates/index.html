@@ -4,184 +4,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avril Writers</title>
-    <!-- Include Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+    <title>Avril Writers - Academic Assistance</title>
+    <meta name="description"
+        content="Get expert academic help for essays, exams, quizzes, and more. 100% original content guaranteed.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico">
+
+    <!-- Font Awesome (using single CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="static/css/styles.css">
+
+    <!-- PayPal SDK (only load when needed) -->
 </head>
 
 <body>
-
     <!-- Header Section -->
     <header>
         <div class="container">
-            <h1>Avril Writers</h1>
-            <nav>
-                <a href="#order_section">Order Help</a>
-                <a href="#about_section">About</a>
-                <a href="#blog_section">Blog</a>
-                <a href="#testimonials_section">Testimonials</a>
-                <a href="#contact_section">Contact</a>
-                <a href="google.com">Login</a>
-                <a href="/signup">Sign Up</a>
+            <div class="logo-container">
+                <h1><a href="/" aria-label="Avril Writers Home">Avril Writers</a></h1>
+            </div>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i>
+            </button>
+            <nav aria-label="Main navigation" id="main-nav">
+                <ul>
+                    <li><a href="#order_section">Order Help</a></li>
+                    <li><a href="#about_section">About</a></li>
+                    <li><a href="#blog_section">Blog</a></li>
+                    <li><a href="#testimonials_section">Testimonials</a></li>
+                    <li><a href="#contact_section">Contact</a></li>
+                    <li><a href="#login" class="login-link" style="cursor: not-allowed;">Login</a></li>
+                    <li><a href="#signup" class="signup-btn" style="cursor: not-allowed;">Sign Up</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Order Help Section -->
-    <section id="order_section">
-        <h2>Order Academic Help</h2>
-        <form id="order-form" action="#" method="POST">
-            <!-- Service Selection Dropdown -->
-            <label for="service">Select Service</label>
-            <select id="service" name="service" required>
-                <option value="essay">Essay</option>
-                <option value="exam">Exam</option>
-                <option value="test">Test</option>
-                <option value="quiz">Quiz</option>
-                <option value="powerpoint">PowerPoint Presentation</option>
-                <option value="project">Project</option>
-            </select>
+    <main>
+        <!-- Order Help Section -->
+        <section id="order_section">
+            <div class="order-container">
+                <!-- Left Side Info Card -->
+                <div class="order-info-card">
+                    <h3>Why Choose Us</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> 100% Original Content</li>
+                        <li><i class="fas fa-check-circle"></i> Expert Writers</li>
+                        <li><i class="fas fa-check-circle"></i> On-Time Delivery</li>
+                        <li><i class="fas fa-check-circle"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited Revisions</li>
+                    </ul>
+                </div>
 
-            <!-- Subject Selection Dropdown -->
-            <label for="subject">Select Subject</label>
-            <select id="subject" name="subject" required>
-                <option value="chemistry">Chemistry</option>
-                <option value="physics">Physics</option>
-                <option value="mathematics">Mathematics</option>
-                <option value="statistics">Statistics</option>
-                <option value="english">English</option>
-                <option value="biology">Biology</option>
-                <option value="history">History</option>
-                <option value="computer_science">Computer Science</option>
-                <option value="geography">Geography</option>
-                <option value="literature">Literature</option>
-                <option value="philosophy">Philosophy</option>
-            </select>
+                <!-- Main Order Form -->
+                <form id="order-form" class="card-form">
+                    <div class="form-header">
+                        <h2>Place Your Order</h2>
+                        <p>Fill out the form below to get started</p>
+                    </div>
 
-            <!-- Number of Pages Input -->
-            <label for="pages">Number of Pages</label>
-            <input type="number" id="pages" name="pages" min="1" required>
+                    <!-- Your existing form fields here -->
+                    <div class="form-group">
+                        <label for="service">Select Service</label>
+                        <select id="service" name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="essay">Essay</option>
+                            <option value="exam">Exam</option>
+                            <option value="test">Test</option>
+                            <option value="quiz">Quiz</option>
+                            <option value="powerpoint">PowerPoint Presentation</option>
+                            <option value="project">Project</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Select Subject</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Select a subject</option>
+                            <option value="chemistry">Chemistry</option>
+                            <option value="physics">Physics</option>
+                            <option value="mathematics">Mathematics</option>
+                            <option value="statistics">Statistics</option>
+                            <option value="english">English</option>
+                            <option value="biology">Biology</option>
+                            <option value="history">History</option>
+                            <option value="computer_science">Computer Science</option>
+                            <option value="geography">Geography</option>
+                            <option value="literature">Literature</option>
+                            <option value="philosophy">Philosophy</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pages">Number of Pages</label>
+                        <input type="number" id="pages" name="pages" min="1" required>
+                    </div>
+                    <!-- Add this after the pages input -->
+                    <div class="form-group" id="slides-field" style="display: none;">
+                        <label for="slides">Number of Slides</label>
+                        <input type="number" id="slides" name="slides" min="1" value="1" required>
+                    </div>
 
-            <!-- Deadline Input -->
-            <label for="deadline">Deadline</label>
-            <input type="date" id="deadline" name="deadline" required>
+                    <div class="form-group">
+                        <label for="deadline">Deadline</label>
+                        <input type="datetime-local" id="deadline" name="deadline" required
+                            min="<?= date('Y-m-d\TH:i', strtotime('+24 hours')) ?>">
+                    </div>
 
-            <!-- Email Input -->
-            <label for="email">Your Email</label>
-            <input type="email" id="email" name="email" required>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
 
-            <!-- Price Display -->
-            <p id="price-display">Total Price: <span>$0</span></p>
-            <br>
+                    <div class="form-group">
+                        <label for="instructions">Additional Instructions</label>
+                        <textarea id="instructions" name="instructions" rows="3"></textarea>
+                    </div>
+                    <!-- More form fields -->
 
-            <!-- Submit Button -->
-            <button type="submit">Place Order</button>
-        </form>
-    </section>
 
-    <!-- About Section -->
-    <section id="about_section">
-        <h2>About Us</h2>
-        <p>We offer academic help for essays, exams, quizzes, and more. Our service is 100% original and free from
-            plagiarism and AI-generated content.</p>
-    </section>
 
-    <!-- Blog Section -->
-    <section id="blog_section">
-        <h2>Blog</h2>
-        <p>Read our articles on academic writing, study tips, and using AI in papers.</p>
-        <a href="#">Read More</a>
-    </section>
+                    <div class="price-display">
+                        <p>Total Price:</p>
+                        <span id="price-amount">$0</span>
+                    </div>
+                    <!--Select Order Method-->
+                    <!-- Order Method Selection -->
+                    <div class="form-group">
+                        <label for="order-method">Choose Order Method:</label><br>
+                        <div class="custom-select">
+                            <select id="order-method" name="order_method" required>
+                                <option value="" disabled selected>Select Order method</option>
+                                <option value="whatsapp">WhatsApp</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="email">Email</option>
+                                <option value="snapchat">Snapchat</option>
+                                <option value="facebook">Facebook</option>
+                                <option value="imessage">iMessage</option>
+                            </select>
+                            <i class="fas fa-chevron-down" style="color:blue;float:right;width:50%;"></i>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials_section">
-        <h2>What Our Clients Say</h2>
-        <p>"Great service! Helped me with my research paper." - John Doe</p>
-        <p>"Fast and reliable! Highly recommend." - Jane Smith</p>
-    </section>
+                        </div>
+                    </div>
 
-    <!-- Contact Section -->
-    <section id="contact_section">
-        <h2>Contact Us</h2>
-        <p>For more information, email us at <a href="mailto:wanyamak884@gmail.com">wanyamak884@gmail.com</a></p>
-    </section>
+                    <button type="submit" class="btn btn-primary btn-icon btn-hover-effect">
+                        <i class="fas fa-paper-plane"></i>Place Order Now
+                    </button>
+
+                    <div class="guarantee-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>100% Satisfaction Guarantee</span>
+                    </div>
+                </form>
+
+                <!-- Right Side Info Card -->
+                <div class="order-info-card">
+                    <h3>How It Works</h3>
+                    <ul>
+                        <li><i class="fas fa-edit"></i> 1. Fill the order form</li>
+                        <li><i class="fas fa-user-tie"></i> 2. We assign an expert</li>
+                        <li><i class="fas fa-clock"></i> 3. Work in progress</li>
+                        <li><i class="fas fa-check-double"></i> 4. Quality check</li>
+                        <li><i class="fas fa-paper-plane"></i> 5. Delivery to you</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about_section">
+            <div class="container">
+                <h2>About Us</h2>
+                <div class="about-content">
+                    <p>Avril Writers provides premium academic assistance with a team of expert writers across various
+                        disciplines. We guarantee:</p>
+                    <ul class="benefits-list">
+                        <li><i class="fas fa-check-circle"></i> 100% original, plagiarism-free content</li>
+                        <li><i class="fas fa-check-circle"></i> No AI-generated text</li>
+                        <li><i class="fas fa-check-circle"></i> Confidentiality guaranteed</li>
+                        <li><i class="fas fa-check-circle"></i> On-time delivery</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited revisions</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog_section" class="section-with-bg">
+            <div class="container">
+                <h2>Latest Articles</h2><br>
+                <div class="blog-preview">
+                    <article class="blog-card">
+                        <h3>How to Write a Winning College Essay</h3>
+                        <p>Learn the secrets to crafting compelling college application essays that stand out...</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                    <article class="blog-card">
+                        <h3>Balancing Academic Work and Personal Life</h3>
+                        <p>Effective strategies for managing your coursework while maintaining a healthy lifestyle...
+                        </p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </article>
+                </div>
+                <a href="#" class="btn-secondary">
+                    View All Articles<i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials_section">
+            <div class="container">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="rating" role="img" aria-label="5 out of 5 stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The writer exceeded my expectations with my research paper. It was well-researched and
+                            delivered before the deadline."</p>
+                        <div class="client-info">
+                            <strong>John D.</strong>
+                            <span>Computer Science Student</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"I was struggling with my statistics exam until I found Avril Writers. They helped me
+                            understand complex concepts."</p>
+                        <div class="client-info">
+                            <strong>Sarah M.</strong>
+                            <span>Business Major</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact_section" class="section-with-bg">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Get in Touch</h3>
+                        <p><i class="fas fa-envelope"></i> <a
+                                href="mailto:wanyamak884@gmail.com">wanyamak884@gmail.com</a></p>
+                        <p><i class="fas fa-phone"></i> +1 (570) 813-6189</p>
+                        <p><i class="fas fa-clock"></i> 24/7 Support</p>
+
+                        <div class="social-links">
+                            <a href="https://www.facebook.com/avrilthewriter/" target="_blank" aria-label="Facebook"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="https://www.twitter.com" target="_blank" aria-label="Twitter"><i
+                                    class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/avrilwriters/" target="_blank" aria-label="Instagram"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="https://wa.me/+15708136189" target="_blank" aria-label="WhatsApp"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="contact-name">Your Name</label>
+                            <input type="text" id="contact-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-email">Your Email</label>
+                            <input type="email" id="contact-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contact-message">Message</label>
+                            <textarea id="contact-message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-icon btn-hover-effect"
+                            style="display: inline-flex; align-items: center; justify-content: center; gap: 8px;">
+                            <i class="fas fa-paper-plane" style="font-size: 1rem;"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Academic Help | <a href="#">Privacy Policy</a></p>
-            <div class="socials">
-                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <div class="footer-content">
+                <div class="footer-about">
+                    <h3>Avril Writers</h3>
+                    <p>Providing quality academic assistance since 2023. Your success is our priority.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#order_section">Order Help</a></li>
+                        <li><a href="#about_section">About Us</a></li>
+                        <li><a href="#blog_section">Blog</a></li>
+                        <li><a href="#testimonials_section">Testimonials</a></li>
+                        <li><a href="#contact_section">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Avril Writers. All rights reserved.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa" aria-hidden="true" title="Visa"></i>
+                    <i class="fab fa-cc-mastercard" aria-hidden="true" title="Mastercard"></i>
+                    <i class="fab fa-cc-paypal" aria-hidden="true" title="PayPal"></i>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-    <script>
-        // Function to update the price when service or number of pages changes
-        function updatePrice() {
-            const service = document.getElementById('service').value;
-            const pages = document.getElementById('pages').value;
-            const priceDisplay = document.getElementById('price-display');
-            let price = 0;
+    <!-- Auth Modal -->
+    <div class="modal-overlay" id="auth-modal">
+        <div class="modal-container">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
 
-            // Determine the price based on selected service
-            if (service === 'essay') {
-                price = 20 * pages;  // $20 per page
-            } else if (service === 'exam') {
-                price = 50;  // Flat price
-            } else if (service === 'test') {
-                price = 35;  // Flat price
-            } else if (service === 'quiz') {
-                price = 25;  // Flat price
-            } else if (service === 'powerpoint') {
-                price = 100; // Example price for PowerPoint
-            } else if (service === 'project') {
-                price = 200; // Example price for Project
-            }
+            <!-- Login Form -->
+            <div id="login-form-container" class="auth-form">
+                <form class="card-form" id="login-form">
+                    <div class="form-header">
+                        <h2>Welcome Back</h2>
+                        <p>Login to your account</p>
+                    </div>
 
-            // Update the price display
-            priceDisplay.innerHTML = `Total Price: $${price}`;
-        }
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="login-email" placeholder="Email" required>
+                        </div>
+                    </div>
 
-        // Event listeners to trigger the price update
-        document.getElementById('service').addEventListener('change', updatePrice);
-        document.getElementById('pages').addEventListener('input', updatePrice);
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="login-password" placeholder="Password" required>
+                        </div>
+                    </div>
 
-        // Run once to set initial price
-        updatePrice();
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
 
-        // Handle form submission to send the order details to WhatsApp
-        document.getElementById('order-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
+                    <p class="auth-footer">Don't have an account?
+                        <a href="#signup" class="auth-switch">Sign Up</a>
+                    </p>
+                </form>
+            </div>
 
-            const service = document.getElementById('service').value;
-            const subject = document.getElementById('subject').value;
-            const pages = document.getElementById('pages').value;
-            const dueDate = document.getElementById('deadline').value;
-            const email = document.getElementById('email').value;
-            const price = document.getElementById('price-display').innerText.split('$')[1];
+            <!-- Signup Form -->
+            <div id="signup-form-container" class="auth-form">
+                <form class="card-form" id="signup-form">
+                    <div class="form-header">
+                        <h2>Create Account</h2>
+                        <p>Get started with us</p>
+                    </div>
 
-            // Construct the WhatsApp message
-            const whatsappMessage = encodeURIComponent(`
-                New Order:
-                Service: ${service}
-                Subject: ${subject}
-                Number of Pages: ${pages}
-                Due Date: ${dueDate}
-                Total Price: $${price}
-                Email: ${email}
-            `);
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="signup-name" placeholder="Full Name" required>
+                        </div>
+                    </div>
 
-            // Redirect the user to WhatsApp
-            const whatsappLink = `https://wa.me/+15708136189?text=${whatsappMessage}`;
-            window.open(whatsappLink, '_blank');
-        });
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="signup-email" placeholder="Email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="signup-password" placeholder="Password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+
+                    <p class="auth-footer">Already have an account?
+                        <a href="#login" class="auth-switch">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="/static/js/scripts.js"></script>
+    <script src="static/js/order.js"></script>
+    <!-- Add schema markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Avril Writers",
+      "image": "logo.jpg"
+    }
     </script>
-
 </body>
 
 </html>
